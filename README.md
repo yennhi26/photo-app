@@ -1,70 +1,114 @@
-# Getting Started with Create React App
+# Mini Project: Photo App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Setup environment 
 
-## Available Scripts
+Github Project: https://github.com/yennhi26/photo-app
 
-In the project directory, you can run:
+### 1. Setup ReactJS App via Create React App
 
-### `yarn start`
+> Link: https://create-react-app.dev/docs/getting-started/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 2. Add SCSS support
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```js
+npm i --save-dev node-sass
+```
 
-### `yarn test`
+### 3. Add react router 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+npm i --save react-router-dom
+```
 
-### `yarn build`
+### 4. Add UI lib
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+npm i --save reactstrap
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Folder structure
 
-### `yarn eject`
+```
+src
+|__ assets
+|  |__ images
+|  |__ styles (global styles) 
+|
+|__ components (shared components)
+|
+|__ features
+  |__ Photo
+    |__ components
+    |  |__ PhotoList
+    |  |__ PhotoCard
+    |  |__ PhotoForm
+    |
+    |__ pages
+    |  |__ MainPage
+    |  |__ AddEditPage
+    |__ photoSlice.js
+    |__ index.js
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Routing structure
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Using lazy load components.
+- Using features load.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```js
+// App.js
+function App() {
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route path="/photos" component={Photo} />
+        <Route path="/user" component={User} />
+        <Route component={NotFound} />
+      </Switch>
+    </BrowserRouter>
+  )
+}
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Custom Field 
 
-## Learn More
+```js
+function InputField(props) {
+  const {
+    field,
+    type, label, placeholder, disabled,
+  } = props;
+  const { name } = field;
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  return (
+    <FormGroup>
+      {label && <Label for={name}>{label}</Label>}
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+      <Input
+        id={name}
+        {...field}
 
-### Code Splitting
+        type={type}
+        disabled={disabled}
+        placeholder={placeholder}
+      />
+    </FormGroup>
+  );
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Random Photo control
 
-### Analyzing the Bundle Size
+RandomPhoto
+Props
+  - name
+  - imageUrl 
+  - onImageUrlChange 
+  - onRandomButtonBlur
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+RandomPhotoField
 
-### Making a Progressive Web App
+Formik
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Yup
