@@ -81,7 +81,7 @@ const photo = createSlice({
   reducers: {
     addPhoto: (state, action) => {
       // const newPhoto = action.payload;
-      state.push(action.payload);
+      state.unshift(action.payload);
     },
     removePhoto: (state, action) => {
       console.log(action.payload);

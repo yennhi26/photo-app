@@ -13,8 +13,11 @@ function Header() {
           <Col xs="auto">
             <a
               className="header__link header__title"
+              href="https://lyratieu.super.site/"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Nhi Tieu
+              Lyra
             </a>
           </Col>
 
@@ -25,7 +28,7 @@ function Header() {
               to="/sign-in"
               activeClassName="header__link--active"
             >
-              Sign In
+              Photo App
             </NavLink>
           </Col>
         </Row>
