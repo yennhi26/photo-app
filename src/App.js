@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link, Redirect } from 'react-router-dom';
 import './App.scss';
 import NotFound from './components/NotFound';
 import Header from './components/Header';
@@ -22,7 +22,8 @@ function App() {
         </ul> */}
 
         <Switch>
-          <Route exact from="/" to="/photos" />
+          <Redirect exact from="/" to="/photos" />
+
           <Route path="/photos" component={Photo} />
           <Route component={NotFound} />
         </Switch>

@@ -4,7 +4,8 @@ import Images from "../../../../constants/images";
 import { Link } from "react-router-dom";
 import { Container } from "reactstrap";
 
-MainPage.PropTypes = {};
+// eslint-disable-next-line react/no-typos
+MainPage.propTypes = {};
 
 function MainPage(props) {
   return (
@@ -14,9 +15,11 @@ function MainPage(props) {
         backgroundUrl={Images.PINK_BG}
       />
 
-      <Container className="text-center">
+      <Container className="text-center mt-3">
         <Link to="/photos/add">Add new photo</Link>
       </Container>
     </div>
   );
 }
+
+export default MainPage;
